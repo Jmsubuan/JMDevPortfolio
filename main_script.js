@@ -1,5 +1,4 @@
-// Show and hide 
-
+// Typing Animation
 const words=['IT Support Specialist','Web Developer','System Configurator','Problem Solver'];
 let i=0,j=0,current='',deleting=false;
 const el=document.getElementById('typing');
@@ -16,6 +15,37 @@ function type(){
     setTimeout(type,deleting?50:100);
 }
 type();
+
+// Mobile Menu Toggle
+window.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger');
+    const navLinksMenu = document.getElementById('navLinks');
+    
+    if (hamburger && navLinksMenu) {
+        // Toggle menu on hamburger click
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            hamburger.classList.toggle('active');
+            navLinksMenu.classList.toggle('active');
+        });
+        
+        // Close menu when a link is clicked
+        navLinksMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinksMenu.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                hamburger.classList.remove('active');
+                navLinksMenu.classList.remove('active');
+            }
+        });
+    }
+});
 
 //####################################################################################
 
